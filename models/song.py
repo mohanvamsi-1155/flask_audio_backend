@@ -1,5 +1,5 @@
 from db import db
-from datetime import datetime
+
 
 class SongModel(db.Model):
     __tablename__ = 'song'

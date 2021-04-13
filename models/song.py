@@ -22,10 +22,12 @@ class SongModel(db.Model):
     def find_by_id(cls, audio_id):
         return SongModel.query.filter_by(ID=audio_id).first()
 
-    def save_to_db(self):
-        db.session.add(self)
+    @staticmethod
+    def save_to_db(song):
+        db.session.add(song)
         db.session.commit()
 
-    def delete_from_db(self):
-        db.session.delete(self)
+    @staticmethod
+    def delete_from_db(song):
+        db.session.delete(song)
         db.session.commit()

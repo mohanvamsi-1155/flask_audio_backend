@@ -26,10 +26,12 @@ class AudiobookModel(db.Model):
     def find_by_id(cls, audio_id):
         return AudiobookModel.query.filter_by(ID=audio_id).first()
 
-    def save_to_db(self):
-        db.session.add(self)
+    @staticmethod
+    def save_to_db(audiobook):
+        db.session.add(audiobook)
         db.session.commit()
 
-    def delete_from_db(self):
-        db.session.delete(self)
+    @staticmethod
+    def delete_from_db(audiobook):
+        db.session.delete(audiobook)
         db.session.commit()

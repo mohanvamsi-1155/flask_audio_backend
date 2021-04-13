@@ -27,15 +27,18 @@ class RetrieveAndDeleteAPI(Resource):
         if audio_type.lower() == 'song':
             song = SongModel.find_by_id(audio_id)
             if song:
-                return song.delete_from_db()
+                SongModel.delete_from_db(song)
+                return {"errorMessage": "Success"}
         elif audio_type.lower() == 'podcast':
             podcast = PodcastModel.find_by_id(audio_id)
             if podcast:
-                return podcast.delete_from_db()
+                PodcastModel.delete_from_db(podcast)
+                return {"errorMessage": "Success"}
         elif audio_type.lower() == 'audiobook':
             audiobook = AudiobookModel.find_by_id(audio_id)
             if audiobook:
-                return audiobook.delete_from_db()
+                AudiobookModel.delete_from_db(audiobook)
+                return {"errorMessage": "Success"}
         else:
             return {'errorMessage': 'Invalid audio file type'}, 400
         return {'errorMessage': 'audio file not found'}, 404

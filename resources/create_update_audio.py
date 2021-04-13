@@ -40,10 +40,10 @@ class CreateAPI(Resource):
             if song is None:
                 song = SongModel(**data)
             else:
-                return {'errorMessage':'Duplicate ID'}, 400
+                return {'errorMessage': 'Duplicate ID'}, 400
 
             try:
-                song.save_to_db()
+                SongModel.save_to_db(song)
             except Exception as e:
                 print(e)
                 return {'errorMessage': 'Internal Error Occurred'}, 500
@@ -59,7 +59,7 @@ class CreateAPI(Resource):
                 return {'errorMessage': 'Duplicate ID'}, 400
 
             try:
-                podcast.save_to_db()
+                PodcastModel.save_to_db(podcast)
             except Exception as e:
                 print(e)
                 return {'errorMessage': 'Internal Error Occurred'}, 500
@@ -75,7 +75,7 @@ class CreateAPI(Resource):
                 return {'errorMessage': 'Duplicate ID'}, 400
 
             try:
-                audiobook.save_to_db()
+                AudiobookModel.save_to_db(audiobook)
             except Exception as e:
                 print(e)
                 return {'errorMessage': 'Internal Error Occurred'}, 500
@@ -100,7 +100,7 @@ class UpdateAPI(Resource):
                 song.uploaded_time = data['uploaded_time']
 
             try:
-                song.save_to_db()
+                SongModel.save_to_db(song)
             except Exception as e:
                 print(e)
                 return {'errorMessage': 'Internal Error Occurred'}, 500
@@ -122,7 +122,7 @@ class UpdateAPI(Resource):
                 podcast.participants = data['participants']
 
             try:
-                podcast.save_to_db()
+                PodcastModel.save_to_db(podcast)
             except Exception as e:
                 print(e)
                 return {'errorMessage': 'Internal Error Occurred'}, 500
@@ -144,7 +144,7 @@ class UpdateAPI(Resource):
                 audiobook.uploaded_time = data['uploaded_time']
 
             try:
-                audiobook.save_to_db()
+                AudiobookModel.save_to_db(audiobook)
             except Exception as e:
                 print(e)
                 return {'errorMessage': 'Internal Error Occurred'}, 500

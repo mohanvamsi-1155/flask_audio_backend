@@ -8,15 +8,6 @@ from config import Config
 app = flask.Flask(__name__)
 app.config.from_object(Config)
 
-# app.config["DEBUG"] = True
-#
-# USR = 'root'
-# PWD = 'mohan1111'
-#
-# SQLALCHEMY_DATABASE_URI = 'mysql://{}:{}@localhost:3306/exercise'.format(USR, PWD)
-# app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
 api = Api(app)
 db.init_app(app)
 
